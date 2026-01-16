@@ -89,7 +89,7 @@ function App() {
               <FeaturedProjects onSeeMore={navigateToAllProjects} />
             </section>
 
-            <section id="skills" className="py-20 text-latte-50 relative overflow-hidden transition-colors duration-500">
+            <section id="skills" className="text-latte-50 relative overflow-hidden transition-colors duration-500">
               <Skills />
             </section>
 
