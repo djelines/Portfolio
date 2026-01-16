@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+
+  /* Palette Café/Latte */
+  --color-latte-50: #faf7f5;
+  --color-latte-100: #f5ebe0;
+  --color-latte-200: #e3d5ca;
+  --color-latte-300: #d5bdaf;
+  --color-latte-400: #c38e70;
+  --color-latte-500: #a66646;
+  --color-latte-600: #8d5036;
+  --color-latte-700: #6f3b26;
+  --color-latte-800: #522b1e;
+  --color-latte-900: #3a1e16;
+  --color-latte-950: #23100c;
+
+  /* Polices */
+  --font-sans: "Outfit", ui-sans-serif, system-ui;
+  --font-hand: "Patrick Hand", cursive;
+
+  /* Animations */
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-twinkle: twinkle 4s ease-in-out infinite;
+  --animate-bounce-slow: bounce 3s infinite;
+  --animate-pop: pop 0.5s cubic-bezier(0.26, 0.53, 0.74, 1.48) forwards;
+  --animate-spin-slow: spin 60s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.9); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+  }
+  @keyframes pop {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+}
+
+@variant dark (&:where(.dark, .dark *));
+
+
+/* --- Styles de base --- */
+@layer base {
+  body {
+    background-color: #faf7f5 !important; /* Force le beige */
+    color: #3a1e16 !important;
+    font-family: "Outfit", sans-serif;
+  }
+
+  /* Seulement SI la classe dark est là, on change */
+  .dark body {
+    background-color: #23100c !important;
+    color: #f5ebe0 !important;
+  }
+}
+
+/* --- Utilitaires Personnalisés --- */
+@layer utilities {
+  /* Effet Verre (Glassmorphism) */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .dark .glass-panel {
+    background: rgba(58, 30, 22, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Conteneur 3D */
+  .perspective-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  /* Carte 3D au Hover */
+  .hover-3d-card {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  }
+  
+  .hover-3d-card:hover {
+    transform: translateY(-8px) rotateX(2deg) rotateY(2deg);
+    box-shadow: 15px 15px 30px rgba(58, 30, 22, 0.15);
+  }
+
+  .dark .hover-3d-card:hover {
+    box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Style Post-it (Note) */
+  .note-shadow {
+    position: relative;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .note-shadow:hover {
+    transform: scale(1.05) rotate(0deg) !important;
+    z-index: 20;
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Effet de ruban adhésif (Tape) */
+  .tape {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 100px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    backdrop-filter: blur(2px);
+    border-left: 1px dashed rgba(255,255,255,0.3);
+    border-right: 1px dashed rgba(255,255,255,0.3);
+    transform: translateX(-50%) rotate(-1.5deg);
+    opacity: 0.8;
+  }
+
+  /* Barre de défilement personnalisée */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-latte-100);
+  }
+  .dark ::-webkit-scrollbar-track {
+    background: var(--color-latte-900);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-latte-400);
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-latte-500);
+  }
+}
