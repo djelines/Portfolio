@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inès Charfi | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              latte: {
+                50: '#faf7f5',  // Milk Foam
+                100: '#f5ebe0', // Cream
+                200: '#e3d5ca', // Oat Milk
+                300: '#d5bdaf', // Light Roast
+                400: '#c38e70', // Caramel
+                500: '#a66646', // Cinnamon
+                600: '#8d5036', // Medium Roast
+                700: '#6f3b26', // Dark Roast
+                800: '#522b1e', // Espresso
+                900: '#3a1e16', // Black Coffee (Text)
+                950: '#23100c',
+              },
+            },
+            fontFamily: {
+              sans: ['Outfit', 'sans-serif'],
+              hand: ['Patrick Hand', 'cursive'],
+            },
+            animation: {
+              'float': 'float 8s ease-in-out infinite',
+              'twinkle': 'twinkle 4s ease-in-out infinite',
+              'bounce-slow': 'bounce 3s infinite',
+              'pop': 'pop 0.5s cubic-bezier(0.26, 0.53, 0.74, 1.48) forwards',
+              'spin-slow': 'spin 60s linear infinite',
+              'spin-reverse': 'spin 40s linear infinite reverse',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              twinkle: {
+                '0%, 100%': { opacity: 0.3, transform: 'scale(0.9)' },
+                '50%': { opacity: 0.8, transform: 'scale(1.1)' },
+              },
+              pop: {
+                '0%': { opacity: 0, transform: 'scale(0.5)' },
+                '100%': { opacity: 1, transform: 'scale(1)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      html {
+        scroll-padding-top: 6rem; /* Ensures smooth scroll lands below navbar */
+      }
+
+      body {
+        /* Default to Light Mode Latte */
+        background-color: #faf7f5;
+        color: #3a1e16;
+        transition: background-color 0.5s ease, color 0.5s ease;
+      }
+      
+      /* Dark Mode overrides via class */
+      html.dark body {
+        background-color: #23100c;
+        color: #f5ebe0;
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f5ebe0;
+      }
+      html.dark ::-webkit-scrollbar-track {
+        background: #3a1e16;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #c38e70;
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #a66646;
+      }
+
+      /* Hide Scrollbar Utility */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      
+      /* 3D Perspective Utils */
+      .perspective-container {
+        perspective: 1000px;
+        transform-style: preserve-3d;
+      }
+      .perspective-deep {
+        perspective: 2000px;
+        transform-style: preserve-3d;
+      }
+      .preserve-3d {
+        transform-style: preserve-3d;
+      }
+      
+      .hover-3d-card {
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+      }
+      .hover-3d-card:hover {
+        transform: translateY(-8px) rotateX(2deg) rotateY(2deg);
+        box-shadow: 15px 15px 30px rgba(58, 30, 22, 0.15), -5px -5px 15px rgba(255, 255, 255, 0.5);
+      }
+      html.dark .hover-3d-card:hover {
+        box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.4), -5px -5px 15px rgba(255, 255, 255, 0.05);
+      }
+      
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+      html.dark .glass-panel {
+        background: rgba(58, 30, 22, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Realistic Post-it Styles - CLEANED UP (No Curl) */
+      .note-shadow {
+        position: relative;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+      .note-shadow:hover {
+        transform: scale(1.05) rotate(0deg) !important;
+        z-index: 20;
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Tape Effect */
+      .tape {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        width: 120px;
+        height: 35px;
+        background-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        backdrop-filter: blur(2px);
+        border-left: 1px dashed rgba(255,255,255,0.3);
+        border-right: 1px dashed rgba(255,255,255,0.3);
+        transform: translateX(-50%) rotate(-1.5deg);
+        opacity: 0.8;
+      }
+    </style>
+  <script type="importmap">
+
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
