@@ -1,5 +1,15 @@
 services:
   portfolio:
-    build: .
+    image: ghcr.io/djelines/portfolio:latest
+    container_name: portfolio_ines
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
     ports:
-      - "8080:80" 
+      - "9927:9927" 
+    restart: always
+    networks:
+      - reseau_partage
+networks:
+  reseau_partage:
+    external: true
+    name: global_network  
