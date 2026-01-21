@@ -6,11 +6,7 @@ RUN npm install
 
 COPY . .
 RUN npm run build
-
-
-FROM nginx:stable-alpine
-
-COPY --from=build /app/dist /usr/share/nginx/html
+RUN npm install -g serve
 
 EXPOSE 9927
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["serve", "-s", "dist", "-l", "9927"]
